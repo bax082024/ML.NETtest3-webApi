@@ -12,7 +12,9 @@ public class ClusteringController : ControllerBase
 
   public ClusteringController()
   {
-    
+    var mlContext = new MLContext();
+    // Load model
+    ITransformer trainedModel = mlContext.Model.Load("Models/customerClusteringModel.Zip", out var modelSchema);
   }
   
 
