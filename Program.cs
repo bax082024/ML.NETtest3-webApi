@@ -1,41 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.ML;
-using Microsoft.ML.Data;
-using System.IO;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-[Route("api/controller")]
-[ApiController]
+var builder = WebApplication.CreateBuilder(args);
 
-public class ClusteringController : ControllerBase
+
+builder.Services.AddControllers();  
+
+var app = builder.Build();
+
+
+if (app.Environment.IsDevelopment())
 {
-  private readonly PredictionEngine<CustomerData, ClusterPrediction> _predictionEngine;
-
-  public ClusteringController()
-  {
-    var mlContext = new MLContext();
-    // Load model
-    ITransformer trainedModel = mlContext.Model.Load("Models/customerClusteringModel.Zip", out var modelSchema);
-  }
-  
-  //Prediction Engine
-  _predictionEngine = MLContext.Model.CreatePredictionEngine<CustomerData, ClusterPrediction>(trainedModel);
-
-  [HttpPost]
-  public ActionResult<string> PredictCluster([FromBody] CustomerData customerData)
-  {
-    var prediction = _predictionEngine.Predict(customerData);
-    return Ok($"Customer belongs to cluster: {prediction.PredictedClusterId}");
-  }
-} 
-
-public class CustomerData
-{
-  public float Age { get; set; }
-  public float Salary { get; set;}
+    app.UseDeveloperExceptionPage();
 }
 
-public class ClusterPrediction
-{
-  [ColumnName("PredictedLabel")]
-  public uint PredictedClusterId { get; set; }
-}
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();  
+
+app.Run();
