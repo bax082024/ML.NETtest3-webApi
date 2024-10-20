@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ML.NETtest3-webApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24914d85d039832d5edd01f545921ed4919dad63")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ebe9ceb92a51c76a4e442b6edcba7ef79e03c8d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ML.NETtest3-webApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ML.NETtest3-webApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
