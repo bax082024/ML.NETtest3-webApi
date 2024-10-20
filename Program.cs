@@ -34,3 +34,8 @@ public class CustomerData
   public float Salary { get; set;}
 }
 
+public class ClusterPrediction
+{
+  [ColumnName("PredictedLabel")]
+  public uint PredictedClusterId { get; set; }
+}
