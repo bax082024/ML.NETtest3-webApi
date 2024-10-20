@@ -27,3 +27,10 @@ public class ClusteringController : ControllerBase
     return Ok($"Customer belongs to cluster: {prediction.PredictedClusterId}");
   }
 } 
+
+public class CustomerData
+{
+  public float Age { get; set; }
+  public float Salary { get; set;}
+}
+
